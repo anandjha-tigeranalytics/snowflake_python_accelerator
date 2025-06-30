@@ -1,9 +1,35 @@
-USE SCHEMA TEST_DB.PUBLIC;
+CREATE OR REPLACE WAREHOUSE DEMOWAREHOUSE;
+CREATE OR REPLACE DATABASE DEMODATABASE;
+CREATE OR REPLACE SCHEMA DEMOSCHEMA;
+
+CREATE OR REPLACE TABLE CREDIT_CARD_CUSTOMERS (
+    CUST_ID VARCHAR(20) PRIMARY KEY,
+    CREDIT_CARD_NUMBER VARCHAR(19),
+    BALANCE NUMBER(10,2),
+    PURCHASES NUMBER(10,2),
+    INSTALLMENTS_PURCHASES NUMBER(10,2),
+    CASH_ADVANCE NUMBER(10,2),
+    CREDIT_LIMIT NUMBER(10,2),
+    PAYMENTS NUMBER(10,2),
+    MINIMUM_PAYMENTS NUMBER(10,2),
+    TENURE INTEGER,
+    DATE_OF_TXN DATE
+);
+
+CREATE OR REPLACE FILE FORMAT CSV_FILE_FORMAT
+    type = 'csv' 
+    compression = 'none' 
+    field_delimiter = ','
+    field_optionally_enclosed_by = 'none'
+    skip_header = 1 ;  
+
+SELECT * FROM DEMODATABASE.DEMOSCHEMA.CREDIT_CARD_CUSTOMERS;
 
 -- OUTPUT AUDIT TABLE
-CREATE OR REPLACE TABLE test_db.public.inventory_metrics_collection (
-  database_name                        STRING,
-  schema_name                        STRING,
+-- OUTPUT AUDIT TABLE
+CREATE OR REPLACE TABLE inventory_metrics_collection (
+  database_name                   STRING,
+  schema_name                     STRING,
   table_name                      STRING,            -- name of the audited table
   row_count                       NUMBER,            -- latest row count
   last_dml_ts                     TIMESTAMP,
