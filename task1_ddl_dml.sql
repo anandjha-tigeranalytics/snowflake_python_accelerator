@@ -64,3 +64,12 @@ INSERT INTO test_db.public.customer
   (1003, 'Carol',    'Carter',    'carol.carter@example.com',    TO_TIMESTAMP_NTZ('2025-03-05 09:45:00'), 'ACTIVE'),
   (1004, 'Dave',     'Dawson',    'dave.dawson@example.com',     TO_TIMESTAMP_NTZ('2025-03-18 16:20:00'), 'INACTIVE'),
   (1005, 'Eve',      'Edwards',   'eve.edwards@example.com',     TO_TIMESTAMP_NTZ('2025-04-01 11:10:00'), 'ACTIVE');
+
+
+-- DML Operations
+DELETE FROM DEMODATABASE.DEMOSCHEMA.CREDIT_CARD_CUSTOMERS
+WHERE CUST_ID = 'C10008';
+
+UPDATE CREDIT_CARD_CUSTOMERS
+SET BALANCE = 7655
+WHERE CUST_ID = 'C10001';
